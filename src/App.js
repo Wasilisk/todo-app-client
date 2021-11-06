@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {Button, Grid} from "@mui/material";
+import AppRouter from "./routers/AppRouter";
+import {makeStyles} from "@mui/styles";
+
+const useStyles = makeStyles((theme) =>({
+    root: {
+        background: theme.palette.background.default,
+        height: '100vh'
+    },
+}));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const classes = useStyles();
+    return (
+        <Grid container className={classes.root}>
+            <Grid item xs>
+            </Grid>
+            <Grid item xs={9}>
+                <AppRouter/>
+            </Grid>
+            <Grid item xs>
+            </Grid>
+        </Grid>
+    );
 }
 
-export default App;
+export default App
+
