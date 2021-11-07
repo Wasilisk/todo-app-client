@@ -22,9 +22,7 @@ const loadFromLocalStorage = () => {
 };
 
 const persistedStore = {
-    auth: loadFromLocalStorage().auth,
-    tasks: loadFromLocalStorage().tasks,
-    categories: loadFromLocalStorage().categories
+    ...loadFromLocalStorage()
 }
 
 export const store = configureStore({
