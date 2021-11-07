@@ -16,6 +16,7 @@ const AddCategory = ({open, setOpen, userId, addCategory}) => {
         },
         onSubmit: (values) => {
             categoryApi.addCategory(values.name, userId).then(data=> addCategory(data))
+            setOpen(false)
         },
     });
 

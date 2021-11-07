@@ -18,6 +18,7 @@ const NewTask = ({open, setOpen, categoryList, userId, addTask, categorySet, cur
             taskApi.addTask(userId, values.description, values.categoryId).then(data =>
                 addTask(data)
             )
+            setOpen(false)
         },
     });
 
