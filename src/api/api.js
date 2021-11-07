@@ -31,6 +31,16 @@ export const taskApi = {
         return instance.get(`task/${userId}`)
             .then(response => response.data)
     },
+    completeTask(taskId) {
+        return instance.post(`task/complete/${taskId}`)
+    },
+    deleteTask(taskId) {
+        return instance.delete(`task/delete/${taskId}`)
+    },
+    addTask(userId, description, categoryId) {
+        return instance.post(`task/create/`, {userId, description, categoryId})
+            .then(response => response.data)
+    }
 }
 
 export const categoryApi = {
@@ -38,4 +48,11 @@ export const categoryApi = {
         return instance.get(`category/${userId}`)
             .then(response => response.data)
     },
+    addCategory(name, userId) {
+        return instance.post(`category/create/`, {name, userId})
+            .then(response => response.data)
+    },
+    deleteCategory(categoryId) {
+        return instance.delete(`category/delete/${categoryId}`)
+    }
 }

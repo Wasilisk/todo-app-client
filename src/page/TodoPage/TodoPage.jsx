@@ -6,8 +6,9 @@ import {useEffect} from "react";
 import {connect} from "react-redux";
 import {setTasks} from "../../store/taskSlice";
 import {setCategories} from "../../store/categorySlice";
+import {logout} from "../../store/authSlice";
 
-const TodoPage = ({userId, username, setTasks, setCategories}) => {
+const TodoPage = ({userId, username, setTasks, setCategories, logout}) => {
 
     useEffect(()=> {
         setTasks(userId);
@@ -16,12 +17,12 @@ const TodoPage = ({userId, username, setTasks, setCategories}) => {
 
     return (
         <>
-            <Navbar username={username}/>
+            <Navbar username={username} logout={logout}/>
             <Grid container>
-                <Grid item xs={3}>
+                <Grid item lg={3} xl={3}>
                     <MainMenu/>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={12} sm={12} md={12} lg={9} xl={9}>
                     <TaskRouter/>
                 </Grid>
             </Grid>
@@ -36,4 +37,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {setTasks, setCategories})(TodoPage)
+export default connect(mapStateToProps, {setTasks, setCategories, logout})(TodoPage)

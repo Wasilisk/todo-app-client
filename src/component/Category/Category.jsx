@@ -6,7 +6,7 @@ import List from "@mui/material/List";
 import * as React from "react";
 import {useHistory} from "react-router-dom";
 
-const CategoryRow = ({name, id}) => {
+const Category = ({name, id}) => {
     const history = useHistory();
     const ChangeCategoryPage = () => {
         history.push(`/todo/category/${id}`)
@@ -24,4 +24,4 @@ const CategoryRow = ({name, id}) => {
     )
 }
 
-export default CategoryRow;
+export default Category;

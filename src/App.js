@@ -1,11 +1,11 @@
-import {Button, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import AppRouter from "./routers/AppRouter";
 import {makeStyles} from "@mui/styles";
 
 const useStyles = makeStyles((theme) =>({
     root: {
         background: theme.palette.background.default,
-        height: '100vh'
+        minHeight: '100vh'
     },
 }));
 
@@ -13,12 +13,12 @@ function App() {
     const classes = useStyles();
     return (
         <Grid container className={classes.root}>
-            <Grid item xs>
+            <Grid item xs md={1}>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} md={10}>
                 <AppRouter/>
             </Grid>
-            <Grid item xs>
+            <Grid item xs md={1}>
             </Grid>
         </Grid>
     );

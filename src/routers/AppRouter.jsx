@@ -20,7 +20,10 @@ const AppRouter = ({isAuth}) => {
                     </Route> : null
                 }
             </Switch>
-            <Redirect to="/login"/>
+            {
+                isAuth ? <Redirect to="/todo/tasks"/> :
+                    <Redirect to="/login"/>
+            }
         </>
     )
 }

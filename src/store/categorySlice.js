@@ -18,12 +18,15 @@ export const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {
+        addCategory: (state, action) => {
+            state.categoryList.push(action.payload);
+        },
         deleteCategory: (state, action) => {
-            state.categoryList.filter(category => category.id !== action.payload.categoryId);
+            state.categoryList = state.categoryList.filter(category => category.id !== action.payload);
         },
     },
     extraReducers: {
-        [setCategories.pending]: (state, action) => {
+        [setCategories.pending]: (state) => {
             state.isLoading = true
         },
         [setCategories.fulfilled]: (state, action) => {
@@ -37,6 +40,6 @@ export const categorySlice = createSlice({
     }
 })
 
-export const { deleteCategory } = categorySlice.actions;
+export const { addCategory, deleteCategory } = categorySlice.actions;
 
 export default categorySlice.reducer;

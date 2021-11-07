@@ -21,19 +21,19 @@ export const taskSlice = createSlice({
         addTask: (state, action) => {
             state.taskList.push(action.payload);
         },
-        updateTask: (state, action) => {
-            state.taskList.map(task => {
-                if(task.id === action.payload.taskId) {
-                    task = action.payload.updatedTask;
-                }
-            })
-        },
         deleteTask: (state, action) => {
-            state.taskList.filter(task => task.id !== action.payload.taskId);
+            state.taskList = state.taskList.filter(task => task.id !== action.payload);
+        },
+        completeTask: (state, action) => {
+            state.taskList.map(task => {
+                if(task.id === action.payload) {
+                    task.isCompleted = true
+                }
+            });
         },
     },
     extraReducers: {
-        [setTasks.pending]: (state, action) => {
+        [setTasks.pending]: (state) => {
             state.isLoading = true
         },
         [setTasks.fulfilled]: (state, action) => {
@@ -47,6 +47,6 @@ export const taskSlice = createSlice({
     }
 })
 
-export const {addTask, updateTask, deleteTask } = taskSlice.actions;
+export const {addTask, deleteTask, completeTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

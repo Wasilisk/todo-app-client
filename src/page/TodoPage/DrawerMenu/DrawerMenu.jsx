@@ -9,30 +9,13 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import {Paper} from "@mui/material";
-import {makeStyles} from "@mui/styles";
 import {connect} from "react-redux";
 import Category from "../../../component/Category/Category";
 import {useHistory} from "react-router-dom";
 import AddCategory from "../../../component/Modals/AddCategory/AddCategory";
 import {addCategory} from "../../../store/categorySlice";
 
-const useStyles = makeStyles((theme) =>({
-    root: {
-        marginTop: '10px',
-        marginBottom: '10px',
-        marginRight: '10px',
-        height: '90vh',
-        position: 'sticky',
-        top: '74px',
-        [theme.breakpoints.down('lg')]: {
-            display: 'none',
-        }
-    }
-}));
-
-const MainMenu = ({categories, userId, addCategory}) => {
-    const classes = useStyles();
+const DrawerMenu = ({categories, userId, addCategory}) => {
     const history = useHistory();
     const [open, setOpen] = React.useState(true);
     const [modalOpen, setModalOpen] = React.useState(false);
@@ -42,7 +25,7 @@ const MainMenu = ({categories, userId, addCategory}) => {
     };
 
     return (
-        <Paper elevation={5} className={classes.root}>
+        <>
             <List>
                 <ListItemButton onClick={()=>history.push('/todo/tasks')}>
                     <ListItemIcon>
@@ -74,15 +57,15 @@ const MainMenu = ({categories, userId, addCategory}) => {
                 </Collapse>
             </List>
             <AddCategory open={modalOpen} setOpen={setModalOpen} userId={userId} addCategory={addCategory}/>
-        </Paper>
+        </>
     );
 }
 
 const mapStateToProps = (state) => {
     return {
         categories: state.categories,
-        userId: state.auth.authData.id
+        userId: state.auth.authData.id,
     }
 }
 
-export default connect(mapStateToProps, {addCategory})(MainMenu)
+export default connect(mapStateToProps, {addCategory})(DrawerMenu)
