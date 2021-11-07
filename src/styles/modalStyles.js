@@ -6,7 +6,7 @@ const modalStyles = makeStyles({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        minWidth: 320,
         padding: '20px',
         boxShadow: 24,
     },

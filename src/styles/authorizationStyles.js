@@ -2,7 +2,7 @@ import {makeStyles} from "@mui/styles";
 
 const authorizationStyles = makeStyles({
     root: {
-        minWidth: '400px',
+        minWidth: '300px',
         maxWidth: '500px',
         height: "auto",
         border: 0,
